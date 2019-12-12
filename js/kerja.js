@@ -12,7 +12,8 @@ var vernam = document.getElementById("vernam");
         if(pass.value == ""){
             alert('Type in your password');
         }else{
-            rijndael.value = pass.value;
+            var vignerehasil = pass + key;
+            alert(vignerehasil);
         }
     }
     dec.onclick = function(){
