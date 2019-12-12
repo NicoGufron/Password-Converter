@@ -1,9 +1,17 @@
 window.onload = function(){
 var pass = document.getElementById("password");
-var button = document.getElementById("klik");
+var enc = document.getElementById("encrypt");
+var dec = document.getElementById("decrypt");
+
+var rijndael = document.getElementById("rijndael");
+var caesar = document.getElementById("caesar");
+var playfair = document.getElementById("playfair");
+var vernam = document.getElementById("vernam");
     button.onclick = function(){
         if(pass.value == ""){
             alert('Type in your password');
+        }else{
+            rijndael.innerHTML = pass.value;
         }
     }
 }
