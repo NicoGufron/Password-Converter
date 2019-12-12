@@ -11,14 +11,14 @@ var vernam = document.getElementById("vernam");
         if(pass.value == ""){
             alert('Type in your password');
         }else{
-            rijndael.innerHTML = pass.value;
+            rijndael.value = pass.value;
         }
     }
     dec.onclick = function(){
         if(pass.value == ""){
             alert('Type in your password');
         }else{
-            caesar.innerHTML = pass.value;
+            caesar.value = pass.value;
         }
     }
 }
