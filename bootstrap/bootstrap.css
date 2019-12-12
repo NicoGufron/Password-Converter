@@ -2226,7 +2226,7 @@ pre code {
   color: #55595c;
   background-color: #f7f7f9;
   background-clip: padding-box;
-  border: 0px solid #ced4da27;
+  border: 1px solid #ced4da;
   border-radius: 0;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -2254,7 +2254,7 @@ pre code {
 .form-control:focus {
   color: #111111;
   background-color: #f7f7f9;
-  border-color: #111111;
+  border-color: #5a5a5a;
   outline: 0;
   -webkit-box-shadow: 0 0 0 0.2rem rgba(26, 26, 26, 0.25);
           box-shadow: 0 0 0 0.2rem rgba(26, 26, 26, 0.25);
