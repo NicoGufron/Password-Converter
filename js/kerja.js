@@ -1,10 +1,11 @@
 window.onload = function(){
 var pass = document.getElementById("password");
+var key = document.getElementById("key");
 var enc = document.getElementById("encrypt");
 var dec = document.getElementById("decrypt");
 
 var rijndael = document.getElementById("rijndael");
-var caesar = document.getElementById("caesar");
+var vignere = document.getElementById("vignere");
 var playfair = document.getElementById("playfair");
 var vernam = document.getElementById("vernam");
     enc.onclick = function(){
