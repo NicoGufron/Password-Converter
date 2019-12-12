@@ -2281,7 +2281,7 @@ pre code {
 }
 
 select.form-control:focus::-ms-value {
-  color: #55595c;
+  color: #111111;
   background-color: #f7f7f9;
 }
 
