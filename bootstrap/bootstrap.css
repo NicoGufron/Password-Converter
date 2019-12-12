@@ -2252,7 +2252,7 @@ pre code {
 }
 
 .form-control:focus {
-  color: #55595c;
+  color: #111111;
   background-color: #f7f7f9;
   border-color: #5a5a5a;
   outline: 0;
