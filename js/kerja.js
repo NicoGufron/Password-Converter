@@ -1,8 +1,7 @@
-
-    var pass = document.getElementById("id");
-    var button = document.getElementById("submit");
-
-    button.onclick = function(){
-        this.alert(pass);
-        rijndael.innerHTML = pass.value;
+var pass = document.getElementById("password");
+var button = document.getElementById("submit");
+button.onclick = function(){
+    if(pass.value == ""){
+        alert('Type in your password');
     }
+}
