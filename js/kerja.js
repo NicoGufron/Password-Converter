@@ -15,6 +15,7 @@ function encryptButton(){
         //kalo true dia decrypt, kalo false jadi encrypt, aneh ya.
         doCrypt(false); //jangan diubah, repot nanti carinya
         playfair.value = encryptPF(pass, key);
+        vernam.value = encryptRF();
     }
 
     //Vignere
@@ -132,4 +133,51 @@ function encryptButton(){
         }
         return ciphertext;
     }
+    //rail fence
+        // function encryptRF(){
+        //     var pt = pass;
+        //     // var keyRF = key.value;
+        //     var keylen = key.length;
+        //     if(pt.length < 1){
+        //         alert("please input some plaintext");
+        //         return
+        //     }
+        //     if(key > Math.floor(2*(pt.length-1))){ alert("key is too large for the plaintext length."); return; } 
+        //     ciphertext=""
+        //     for(line=0; line<key-1; line++){
+        //         skip=2*(key-line-1);   j=0;
+        //         for(i=line; i<pt.length;){
+        //             ciphertext += pt.charAt(i);
+        //             if((line==0) || (j%2 == 0)) i+=skip;
+        //             else i+=2*(key-1) - skip;  
+        //             j++;          
+        //         }
+        //     }
+        //     for(i=line; i<pt.length; i+=2*(key-1)) ciphertext += pt.charAt(i);
+        //         document.getElementById("vernam").value = pt;
+        //     alert(pt);
+        //     alert(keylen);
+        // }
+
+        function encryptRF() {
+            plaintext = document.getElementById("password").value.toLowerCase().replace(/[^a-z]/g, "");  
+            if(plaintext.length < 1){ alert("please enter some plaintext"); return; }    
+            var keylen = parseInt(document.getElementById("key").value.length);
+            if(keylen > Math.floor(2*(plaintext.length-1))){ alert("key is too large for the plaintext length."); return; }  
+            ciphertext = "";
+            for(line=0; line<keylen-1; line++){
+                skip=2*(keylen-line-1);   j=0;
+                for(i=line; i<plaintext.length;){
+                    ciphertext += plaintext.charAt(i);
+                    if((line==0) || (j%2 == 0)) i+=skip;
+                    else i+=2*(keylen-1) - skip;  
+                j++;          
+                }
+            }
+            for(i=line; i<plaintext.length; i+=2*(keylen-1)) ciphertext += plaintext.charAt(i);
+            //document.getElementById("vernam").value = ciphertext;
+            vernam = ciphertext;
+            return vernam;
+        }
+    //rail fence
 }
