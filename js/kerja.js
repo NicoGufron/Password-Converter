@@ -107,4 +107,5 @@ function ecnryptButton(){
             }
         }
         return ciphertext;
-
+    }
+}
