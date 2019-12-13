@@ -9,7 +9,6 @@ function ecnryptButton(){
     var playfair = document.getElementById("playfair");
     var vernam = document.getElementById("vernam");
        
-
     if(pass == ""){
         alert('Type in your password');
     }else{
