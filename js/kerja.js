@@ -13,7 +13,7 @@ function encryptButton(){
         alert('Type in your password and your key');
     }else{
         //kalo true dia decrypt, kalo false jadi encrypt, aneh ya.
-        doCrypt(true); //jangan diubah, repot nanti carinya
+        doCrypt(false); //jangan diubah, repot nanti carinya
         playfair.value = encryptPF(pass, key);
     }
 
