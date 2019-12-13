@@ -1,6 +1,5 @@
-window.onload = function(){
-var pass = document.getElementById("password");
-var key = document.getElementById("key");
+var pass = document.getElementById("password").value;
+var key = document.getElementById("key").value;
 var enc = document.getElementById("encrypt");
 var dec = document.getElementById("decrypt");
 
@@ -12,8 +11,7 @@ var vernam = document.getElementById("vernam");
         if(pass.value == ""){
             alert('Type in your password');
         }else{
-            var vignerehasil = pass + key;
-            alert(vignerehasil);
+            vignere.value = encrypt(pass,key);
         }
     }
     dec.onclick = function(){
@@ -23,4 +21,29 @@ var vernam = document.getElementById("vernam");
             caesar.value = pass.value;
         }
     }
+function encryptV(pass,key){
+    var output = "";
+    for (var i = 0; j < pass.length; i++){
+        var c = pass.charCodeAt(i);
+        if(isUppercase(c)){
+            output += String.fromCharCode((c - 65 + key[j % key.length]) % 26 + 65);
+            j++;        
+        }
+        else if(isLowercase(c)){
+            output += String.fromCharCode((c - 97 + key[j % key.length]) % 26 + 97);
+        }
+        else{
+            output += pass.charAt(i);
+        }
+    }
+    return output;
+}
+function decryptV(pass,key){
+    
+}
+function isUppercase(c){
+    return 65 <= c&& c <= 90;
+}
+function isLowercase(c){
+    return 97 <= c && c <= 122;
 }
