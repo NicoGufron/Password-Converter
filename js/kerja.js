@@ -1,5 +1,5 @@
-var pass = document.getElementById("password").value;
-var key = document.getElementById("key").value;
+var pass = document.getElementById("password");
+var key = document.getElementById("key");
 var enc = document.getElementById("encrypt");
 var dec = document.getElementById("decrypt");
 
@@ -11,7 +11,9 @@ var vernam = document.getElementById("vernam");
         if(pass.value == ""){
             alert('Type in your password');
         }else{
-            vignere.value = encrypt(pass,key);
+            var passval = pass.value;
+            var keyval = key.value;
+            vignere.value = encrypt(passval,keyval);
         }
     }
     dec.onclick = function(){
