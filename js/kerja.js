@@ -20,7 +20,7 @@ function encryptButton(){
     //Vignere
     function encryptV(pass,key){
         var output = "";
-        for (var i = 0; j < pass.length; i++){
+        for (var i = 0, j = 0; i < pass.length; i++){
             var c = pass.charCodeAt(i);
             if(isUppercase(c)){
                 output += String.fromCharCode((c - 65 + key[j % key.length]) % 26 + 65);
@@ -28,15 +28,13 @@ function encryptButton(){
             }
             else if(isLowercase(c)){
                 output += String.fromCharCode((c - 97 + key[j % key.length]) % 26 + 97);
+                j++;
             }
             else{
                 output += pass.charAt(i);
             }
         }
         return output;
-    }
-    function decryptV(pass,key){
-        
     }
     function isUppercase(c){
         return 65 <= c&& c <= 90;
