@@ -134,31 +134,6 @@ function encryptButton(){
         return ciphertext;
     }
     //rail fence
-        // function encryptRF(){
-        //     var pt = pass;
-        //     // var keyRF = key.value;
-        //     var keylen = key.length;
-        //     if(pt.length < 1){
-        //         alert("please input some plaintext");
-        //         return
-        //     }
-        //     if(key > Math.floor(2*(pt.length-1))){ alert("key is too large for the plaintext length."); return; } 
-        //     ciphertext=""
-        //     for(line=0; line<key-1; line++){
-        //         skip=2*(key-line-1);   j=0;
-        //         for(i=line; i<pt.length;){
-        //             ciphertext += pt.charAt(i);
-        //             if((line==0) || (j%2 == 0)) i+=skip;
-        //             else i+=2*(key-1) - skip;  
-        //             j++;          
-        //         }
-        //     }
-        //     for(i=line; i<pt.length; i+=2*(key-1)) ciphertext += pt.charAt(i);
-        //         document.getElementById("vernam").value = pt;
-        //     alert(pt);
-        //     alert(keylen);
-        // }
-
         function encryptRF() {
             plaintext = document.getElementById("password").value.toLowerCase().replace(/[^a-z]/g, "");  
             if(plaintext.length < 1){ alert("please enter some plaintext"); return; }    
