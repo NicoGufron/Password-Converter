@@ -157,6 +157,8 @@ function encryptButton(){
         return railfence;
     }
     //rail fence
+
+    
     //caesar
     function encryptC(str, amount) {
 
