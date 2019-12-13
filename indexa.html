@@ -13,10 +13,23 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 	<script src="includes/jquery.alphanumeric.pack.js"></script>
 	<script src="includes/scripts.js"></script>
-	<title>Password Conventer</title>
+	<title>Password Converter</title>
+
 </head>
 
 <body>
+	<style>
+		body{
+			background-color:#FFFFFF;
+		}
+		textarea{
+			border:1px solid black;
+			
+		}
+		label{
+			color:black;
+		}
+	</style>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<a class="navbar-brand" href="index.html">Crypto</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
@@ -47,9 +60,9 @@
 		<label>Output</label>
 		<textarea id="output" name="output"></textarea>
 
-		<button id="encrypt" type="button">Encrypt</button>
-		<button id="decrypt" type="button">Decrypt</button>
-		<button id="reset" type="button">Reset</button>
+		<button id="encrypt" type="button" class= "btn btn-outline-primary">Encrypt</button>
+		<button id="decrypt" type="button" class= "btn btn-outline-primary">Decrypt</button>
+		<button id="reset" type="reset" class= "btn btn-outline-primary">Reset</button>
 	</div>
 
 </body>
