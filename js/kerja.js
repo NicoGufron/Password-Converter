@@ -1,21 +1,23 @@
 function encryptButton(){
     var pass = document.getElementById("password").value;
     var key = document.getElementById("key").value;
-    var enc = document.getElementById("encrypt");
-    var dec = document.getElementById("decrypt");
+
+    var shift = document.getElementById("shift").value;
 
     var rijndael = document.getElementById("rijndael");
     var vignere = document.getElementById("vignere");
     var playfair = document.getElementById("playfair");
-    var vernam = document.getElementById("vernam");
+    var railfence = document.getElementById("railfence");
+    var caesar = document.getElementById("caesar");
        
-    if(pass == "" || key == ""){
+    if(pass == ""){
         alert('Type in your password and your key');
     }else{
         //kalo true dia decrypt, kalo false jadi encrypt, aneh ya.
         doCrypt(false); //jangan diubah, repot nanti carinya
         playfair.value = encryptPF(pass, key);
-        vernam.value = encryptRF();
+        railfence.value = encryptRF();
+        caesar.value = encryptC(pass, parseInt(shift));
     }
 
     //Vignere
@@ -134,25 +136,67 @@ function encryptButton(){
         return ciphertext;
     }
     //rail fence
-        function encryptRF() {
-            plaintext = document.getElementById("password").value.toLowerCase().replace(/[^a-z]/g, "");  
-            if(plaintext.length < 1){ alert("please enter some plaintext"); return; }    
-            var keylen = parseInt(document.getElementById("key").value.length);
-            if(keylen > Math.floor(2*(plaintext.length-1))){ alert("key is too large for the plaintext length."); return; }  
-            ciphertext = "";
-            for(line=0; line<keylen-1; line++){
-                skip=2*(keylen-line-1);   j=0;
-                for(i=line; i<plaintext.length;){
-                    ciphertext += plaintext.charAt(i);
-                    if((line==0) || (j%2 == 0)) i+=skip;
-                    else i+=2*(keylen-1) - skip;  
-                j++;          
-                }
+    function encryptRF() {
+        plaintext = document.getElementById("password").value.toLowerCase().replace(/[^a-z]/g, "");  
+        if(plaintext.length < 1){ alert("please enter some plaintext"); return; }    
+        var keylen = parseInt(document.getElementById("key").value.length);
+        if(keylen > Math.floor(2*(plaintext.length-1))){ alert("key is too large for the plaintext length."); return; }  
+        ciphertext = "";
+        for(line=0; line<keylen-1; line++){
+            skip=2*(keylen-line-1);   j=0;
+            for(i=line; i<plaintext.length;){
+                ciphertext += plaintext.charAt(i);
+                if((line==0) || (j%2 == 0)) i+=skip;
+                else i+=2*(keylen-1) - skip;  
+            j++;          
             }
-            for(i=line; i<plaintext.length; i+=2*(keylen-1)) ciphertext += plaintext.charAt(i);
-            //document.getElementById("vernam").value = ciphertext;
-            vernam = ciphertext;
-            return vernam;
         }
+        for(i=line; i<plaintext.length; i+=2*(keylen-1)) ciphertext += plaintext.charAt(i);
+        //document.getElementById("vernam").value = ciphertext;
+        railfence = ciphertext;
+        return railfence;
+    }
     //rail fence
+    //caesar
+    function encryptC(str, amount) {
+
+        // Wrap the amount
+        if (amount < 0)
+            return caesarShift(str, amount + 26);
+    
+        // Make an output variable
+        var output = '';
+    
+        // Go through each character
+        for (var i = 0; i < str.length; i ++) {
+    
+            // Get the character we'll be appending
+            var c = str[i];
+    
+            // If it's a letter...
+            if (c.match(/[a-z]/i)) {
+    
+                // Get its code
+                var code = str.charCodeAt(i);
+    
+                // Uppercase letters
+                if ((code >= 65) && (code <= 90))
+                    c = String.fromCharCode(((code - 65 + amount) % 26) + 65);
+    
+                // Lowercase letters
+                else if ((code >= 97) && (code <= 122))
+                    c = String.fromCharCode(((code - 97 + amount) % 26) + 97);
+    
+            }
+    
+            // Append
+            output += c;
+    
+        }
+    
+        // All done!
+        return output;
+    
+    };
+    //caesar
 }
