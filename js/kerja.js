@@ -9,15 +9,28 @@ function encryptButton(){
     var playfair = document.getElementById("playfair");
     var vernam = document.getElementById("vernam");
        
-    if(pass == ""){
-        alert('Type in your password');
+    if(pass == "" || key == ""){
+        alert('Type in your password and your key');
     }else{
-        vignere.value = encryptV(pass,key);
-
+        doCrypt(false); //jangan diubah, repot nanti carinya
         playfair.value = encryptPF(pass, key);
     }
 
     //Vignere
+    function doCrypt(isDecrypt){
+        var key1 = filterKey(document.getElementById("key").value);
+        if(key1.length == 0){
+            alert("Key has no letters");
+            return;
+        }
+        if(isDecrypt){
+            for(var i = 0; i<key1.length;i++){
+                key1[i] = (26 - key[i]) % 26;
+            }
+        }
+        alert(encryptV(pass,key1));
+        vignere.value = encryptV(pass,key1);
+    }
     function encryptV(pass,key){
         var output = "";
         for (var i = 0, j = 0; i < pass.length; i++){
@@ -35,6 +48,20 @@ function encryptButton(){
             }
         }
         return output;
+    }
+    
+    function filterKey(key){
+        var result = [];
+        for(var i = 0; i< key.length; i++){
+            var c = key.charCodeAt(i);
+            if(isLetter(c)){
+                result.push((c - 65) % 32);
+            }
+        }
+        return result;
+    }
+    function isLetter(c){
+        return isUppercase(c) || isLowercase(c);
     }
     function isUppercase(c){
         return 65 <= c&& c <= 90;
