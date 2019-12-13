@@ -107,6 +107,4 @@ function ecnryptButton(){
             }
         }
         return ciphertext;
-    }
-    //PlayFair
-}
+
