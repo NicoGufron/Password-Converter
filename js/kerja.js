@@ -1,4 +1,4 @@
-function ecnryptButton(){
+function encryptButton(){
     var pass = document.getElementById("password").value;
     var key = document.getElementById("key").value;
     var enc = document.getElementById("encrypt");
