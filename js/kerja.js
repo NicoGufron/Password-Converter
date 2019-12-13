@@ -12,7 +12,8 @@ function encryptButton(){
     if(pass == "" || key == ""){
         alert('Type in your password and your key');
     }else{
-        doCrypt(false); //jangan diubah, repot nanti carinya
+        //kalo true dia decrypt, kalo false jadi encrypt, aneh ya.
+        doCrypt(true); //jangan diubah, repot nanti carinya
         playfair.value = encryptPF(pass, key);
     }
 
@@ -24,11 +25,10 @@ function encryptButton(){
             return;
         }
         if(isDecrypt){
-            for(var i = 0; i<key1.length;i++){
+            for(var i = 0; i < key1.length;i++){
                 key1[i] = (26 - key[i]) % 26;
             }
         }
-        alert(encryptV(pass,key1));
         vignere.value = encryptV(pass,key1);
     }
     function encryptV(pass,key){
